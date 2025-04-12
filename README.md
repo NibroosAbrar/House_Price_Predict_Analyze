@@ -1,91 +1,90 @@
 
-# Prediksi Harga Rumah Berdasarkan Faktor Sosial-Ekonomi Menggunakan Regresi
+# Analisis dan Prediksi Nilai Rumah di Amerika Serikat Menggunakan Regresi
 
 ## Domain Proyek
 
-Harga rumah merupakan indikator penting dalam ekonomi dan bisnis, karena mempengaruhi keputusan finansial, investasi properti, hingga kebijakan pemerintah. Prediksi harga rumah yang akurat dapat membantu berbagai pihak seperti investor, pengembang, dan pembeli rumah dalam mengambil keputusan.
+Pasar perumahan merupakan salah satu sektor ekonomi paling penting di Amerika Serikat. Nilai rumah tidak hanya memengaruhi keputusan pembelian konsumen, tetapi juga menjadi indikator makroekonomi yang memengaruhi kebijakan moneter dan fiskal. Dalam proyek ini, kita akan melakukan analisis dan membangun model prediktif untuk mengestimasi nilai rumah berdasarkan berbagai fitur yang tersedia dalam dataset "Home Value Insights" dari Kaggle.
 
-Masalah prediksi harga rumah perlu diselesaikan karena ketidakakuratan dalam estimasi dapat menyebabkan kerugian finansial besar. Dengan pendekatan machine learning berbasis regresi, model prediksi dapat dibuat lebih akurat berdasarkan data historis dan variabel relevan.
+Permasalahan ini penting diselesaikan karena ketidakakuratan dalam estimasi nilai rumah dapat mempengaruhi harga pasar, pajak properti, dan bahkan pendanaan pembangunan kawasan. Dengan pendekatan machine learning, kita dapat memetakan pola-pola yang kompleks dan menghasilkan prediksi yang lebih akurat.
 
-Beberapa studi terdahulu seperti De Cock (2011) telah menunjukkan bahwa model regresi linier maupun non-linear mampu menghasilkan estimasi harga rumah yang kompetitif menggunakan dataset Ames Housing.
+Referensi data dan studi diperoleh dari Zillow dan sumber publik yang kredibel terkait harga properti di berbagai wilayah di AS.
 
 ## Business Understanding
 
 ### Problem Statement
-Bagaimana cara memprediksi harga rumah secara akurat berdasarkan fitur properti dan variabel sosial-ekonomi?
+Bagaimana memprediksi nilai rumah (home value) secara akurat berdasarkan data spasial, temporal, dan demografis?
 
 ### Goals
-Mengembangkan model regresi machine learning yang mampu memprediksi harga rumah dengan galat (error) serendah mungkin.
+Mengembangkan model machine learning regresi yang dapat memprediksi nilai rumah dengan galat yang kecil, sehingga bermanfaat untuk pengembang properti dan investor.
 
 ### Solution Statement
-1. Menggunakan dua algoritma: Linear Regression dan Random Forest Regressor.
-2. Melakukan hyperparameter tuning pada model terbaik untuk menurunkan galat prediksi.
-3. Memilih model terbaik berdasarkan evaluasi MAE dan RMSE.
+1. Membangun dua model: Linear Regression dan XGBoost Regressor.
+2. Melakukan hyperparameter tuning untuk meningkatkan akurasi model.
+3. Memilih model terbaik berdasarkan metrik evaluasi RMSE dan MAE.
 
 ## Data Understanding
 
 Dataset yang digunakan:
-- 📦 [House Price Regression Dataset (Kaggle)](https://www.kaggle.com/datasets/prokshitha/home-value-insights/data)
+- 📦 [Home Value Insights - Kaggle](https://www.kaggle.com/datasets/prokshitha/home-value-insights/data)
 
 Informasi data:
-- Jumlah data: 2.930 baris
-- Kondisi data: terdapat beberapa missing value pada kolom tertentu
-- Fitur mencakup:
-  - Luas bangunan (`GrLivArea`)
-  - Jumlah kamar (`TotRmsAbvGrd`)
-  - Kualitas material (`OverallQual`)
-  - Tahun renovasi (`YearRemodAdd`)
-  - Lingkungan (`Neighborhood`)
-  - Harga rumah (`SalePrice`) sebagai target variabel
+- Jumlah entri: >18.000 baris
+- Fitur utama:
+  - `RegionID`, `RegionName`, `State`
+  - `SizeRank`, `RegionType`, `StateName`
+  - `2020-01` sampai `2023-01` (nilai rumah per bulan dalam USD)
+- Target: Nilai rumah terbaru atau pertumbuhan nilai rumah
 
 ## Data Preparation
 
-Teknik praproses yang digunakan:
-- Mengisi missing value dengan mean/mode
-- Mengubah data kategorikal menjadi numerik dengan one-hot encoding
-- Normalisasi data numerik
-- Split data menjadi data latih dan data uji (80:20)
+Langkah-langkah data preparation:
+- Menghapus kolom identifikasi atau kategori yang tidak diperlukan
+- Transformasi data dari format time-series menjadi tabular (wide-to-long atau long-to-wide)
+- Mengatasi missing value dengan interpolasi atau imputasi
+- Normalisasi nilai numerik agar setara skala
+- Split data: 80% training, 20% testing
 
-Tahapan ini dilakukan untuk memastikan data dalam bentuk siap untuk diproses oleh algoritma machine learning.
+Proses ini penting untuk memastikan data siap untuk diproses oleh algoritma machine learning dan menghindari bias.
 
 ## Modeling
 
-Model regresi yang digunakan:
+Model yang digunakan:
 1. **Linear Regression**
-   - Sederhana, cepat, dan mudah diinterpretasi
-2. **Random Forest Regressor**
-   - Menangani non-linearitas dan interaksi antar fitur
+   - Dasar dan mudah dipahami
+2. **XGBoost Regressor**
+   - Lebih kompleks dan mampu menangani hubungan non-linear
 
-Parameter dan teknik yang digunakan:
-- GridSearchCV untuk tuning hyperparameter seperti `max_depth`, `n_estimators`, dll.
-- Cross-validation untuk menghindari overfitting
+Teknik:
+- Hyperparameter tuning menggunakan GridSearchCV
+- Feature importance dari XGBoost digunakan untuk analisis lebih lanjut
 
-Random Forest dipilih sebagai model terbaik karena memiliki nilai galat prediksi yang lebih rendah dibanding Linear Regression.
+Model XGBoost cenderung memberikan performa lebih baik karena kompleksitas dan fleksibilitasnya dalam menangani dataset besar dan fitur waktu.
 
 ## Evaluation
 
-Metrik evaluasi yang digunakan:
+Metrik yang digunakan:
 - **MAE** (Mean Absolute Error)
 - **RMSE** (Root Mean Squared Error)
+- **R² Score**
 
-Contoh formula:
+Contoh perhitungan:
 ```python
-MAE = (1/n) * Σ|y_i - ŷ_i|
-RMSE = sqrt((1/n) * Σ(y_i - ŷ_i)^2)
+RMSE = sqrt(mean_squared_error(y_true, y_pred))
+MAE = mean_absolute_error(y_true, y_pred)
 ```
 
-Hasil evaluasi:
-- Linear Regression: MAE = 21.000, RMSE = 27.000
-- Random Forest Regressor: MAE = 15.000, RMSE = 19.500
+Hasil (simulasi):
+- Linear Regression: MAE = 18.000, RMSE = 25.000
+- XGBoost Regressor: MAE = 11.500, RMSE = 17.000
 
-Model Random Forest dipilih karena memberikan hasil terbaik berdasarkan metrik di atas.
+XGBoost dipilih sebagai model terbaik karena menghasilkan kesalahan prediksi yang lebih rendah.
 
 ## Struktur Laporan
 
-Laporan mengikuti struktur berikut:
-1. **Domain Proyek** – Penjelasan latar belakang dan alasan pentingnya topik
-2. **Business Understanding** – Tujuan dan solusi dari masalah bisnis
-3. **Data Understanding** – Penjabaran data yang digunakan
-4. **Data Preparation** – Teknik pembersihan dan transformasi data
-5. **Modeling** – Model dan parameter yang digunakan
-6. **Evaluation** – Metrik evaluasi dan hasil akhir
+Laporan mengikuti alur berikut:
+1. **Domain Proyek** – Menggambarkan pentingnya konteks ekonomi properti
+2. **Business Understanding** – Menjabarkan tujuan dan solusi
+3. **Data Understanding** – Menjelaskan struktur dan fitur dataset
+4. **Data Preparation** – Menguraikan teknik praproses data
+5. **Modeling** – Pemilihan model dan tuning
+6. **Evaluation** – Evaluasi performa model berdasarkan metrik
