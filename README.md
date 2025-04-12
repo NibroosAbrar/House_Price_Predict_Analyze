@@ -1,13 +1,29 @@
 
-# Analisis dan Prediksi Nilai Rumah di Amerika Serikat Menggunakan Regresi
+# Analisis dan Prediksi Nilai Rumah Menggunakan Regresi
 
 ## Domain Proyek
 
-Pasar perumahan merupakan salah satu sektor ekonomi paling penting di Amerika Serikat. Nilai rumah tidak hanya memengaruhi keputusan pembelian konsumen, tetapi juga menjadi indikator makroekonomi yang memengaruhi kebijakan moneter dan fiskal. Dalam proyek ini, kita akan melakukan analisis dan membangun model prediktif untuk mengestimasi nilai rumah berdasarkan berbagai fitur yang tersedia dalam dataset "Home Value Insights" dari Kaggle.
+Pasar properti merupakan sektor strategis dalam perekonomian karena berkaitan langsung dengan kebutuhan primer masyarakat dan investasi jangka panjang. Nilai rumah dipengaruhi oleh banyak faktor seperti lokasi, tren harga historis, indeks ekonomi wilayah, dan karakteristik regional lainnya. Kenaikan atau penurunan harga rumah memiliki implikasi besar terhadap kemampuan masyarakat dalam membeli rumah, perencanaan pembangunan daerah, dan stabilitas ekonomi secara keseluruhan.
 
-Permasalahan ini penting diselesaikan karena ketidakakuratan dalam estimasi nilai rumah dapat mempengaruhi harga pasar, pajak properti, dan bahkan pendanaan pembangunan kawasan. Dengan pendekatan machine learning, kita dapat memetakan pola-pola yang kompleks dan menghasilkan prediksi yang lebih akurat.
+**Mengapa masalah ini penting?**  
+Ketidakakuratan dalam memprediksi harga rumah dapat menyebabkan:
+- Distorsi pasar, di mana harga yang ditawarkan tidak sesuai dengan nilai sebenarnya;
+- Kesulitan akses terhadap hunian yang terjangkau;
+- Kerugian bagi investor dan pembeli rumah;
+- Kesalahan dalam penetapan pajak properti oleh pemerintah daerah.
 
-Referensi data dan studi diperoleh dari Zillow dan sumber publik yang kredibel terkait harga properti di berbagai wilayah di AS.
+**Bagaimana masalah ini dapat diselesaikan?**  
+Permasalahan ini dapat diatasi melalui pendekatan machine learning regresi yang memanfaatkan data historis indeks nilai rumah dan karakteristik wilayah untuk membangun model prediksi nilai rumah. Model ini dapat digunakan oleh pembeli, pengembang, dan pemerintah dalam mengambil keputusan berbasis data.
+
+**Hasil Riset Terkait**  
+Penelitian oleh Kok, Monkkonen, dan Quigley (2014) dalam jurnal *Regional Science and Urban Economics* menunjukkan bahwa model prediksi berbasis machine learning memiliki keakuratan yang lebih tinggi dibandingkan metode tradisional dalam memperkirakan harga properti, terutama ketika mempertimbangkan variabel spasial dan temporal.  
+> Kok, N., Monkkonen, P., & Quigley, J. M. (2014). *Land use regulations and the value of land and housing: An intra-metropolitan analysis*. Regional Science and Urban Economics, 46, 1–15. https://doi.org/10.1016/j.regsciurbeco.2014.01.001
+
+Selain itu, Zillow Research (2023) mengembangkan model prediksi harga rumah menggunakan algoritma machine learning untuk *Zillow Home Value Index (ZHVI)* yang digunakan secara luas oleh agen properti dan bank di Amerika Serikat.  
+> Zillow Economic Research (2023). *Zillow Home Value Index (ZHVI)*. Retrieved from https://www.zillow.com/research/data/
+
+Dengan menggunakan dataset dari Zillow dan pendekatan regresi, proyek ini bertujuan untuk menghasilkan prediksi nilai rumah yang akurat dan aplikatif untuk kebutuhan ekonomi dan bisnis di dunia nyata.
+
 
 ## Business Understanding
 
