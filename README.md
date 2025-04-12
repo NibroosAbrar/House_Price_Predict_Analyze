@@ -25,7 +25,7 @@ Mengembangkan model regresi machine learning yang mampu memprediksi harga rumah 
 ## Data Understanding
 
 Dataset yang digunakan:
-- 📦 [Ames Housing Dataset (Kaggle)](https://www.kaggle.com/datasets/prevek18/ames-housing-dataset)
+- 📦 [House Price Regression Dataset (Kaggle)](https://www.kaggle.com/datasets/prokshitha/home-value-insights/data)
 
 Informasi data:
 - Jumlah data: 2.930 baris
