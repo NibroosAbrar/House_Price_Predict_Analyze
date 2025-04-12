@@ -322,3 +322,31 @@ Berdasarkan evaluasi metrik:
 
 Model ini dapat digunakan secara praktis untuk memprediksi harga rumah dengan tingkat kesalahan yang sangat kecil dan stabil baik di data latih maupun uji.
 
+## Kesimpulan
+
+Berdasarkan proses analisis, pemodelan, dan evaluasi yang telah dilakukan, dapat diambil beberapa kesimpulan sebagai berikut:
+
+1. **Pemilihan Model**  
+   Dua algoritma telah dibandingkan, yaitu **Random Forest Regressor** dan **XGBoost Regressor**. Keduanya menunjukkan performa yang sangat baik, namun Random Forest memberikan hasil evaluasi yang lebih baik secara keseluruhan pada data uji.
+
+2. **Kinerja Model**  
+   - Model Random Forest mencapai nilai R² sebesar **0.9993** pada data uji, menunjukkan bahwa model mampu menjelaskan hampir seluruh variasi target.
+   - Nilai MAPE Random Forest sebesar **1.43%**, lebih kecil dibanding XGBoost (**1.51%**), mengindikasikan tingkat kesalahan prediksi yang rendah dan konsisten.
+   - RMSE dan MAE juga menunjukkan bahwa kesalahan absolut model sangat kecil.
+
+3. **Fitur Paling Berpengaruh**  
+   Baik Random Forest maupun XGBoost menunjukkan bahwa fitur **Square_Footage**, **Year_Built**, dan **Lot_Size** merupakan kontributor paling penting dalam memprediksi harga rumah.
+
+4. **Rekomendasi**  
+   Berdasarkan hasil evaluasi, **Random Forest** dipilih sebagai **model terbaik** karena:
+   - Memberikan hasil yang lebih stabil dan akurat.
+   - Lebih mudah untuk ditafsirkan dan digunakan dalam produksi.
+
+5. **Kesesuaian Metrik**  
+   Metrik yang digunakan seperti R², MAE, RMSE, dan MAPE telah sesuai dengan karakteristik data regresi dan problem statement yaitu meminimalkan kesalahan prediksi harga rumah.
+
+---
+
+Model yang dibangun telah mencapai performa yang sangat baik dan dapat diandalkan untuk memprediksi harga properti berdasarkan fitur-fitur penting. Langkah selanjutnya yang direkomendasikan adalah melakukan **deployment** model ini ke dalam aplikasi atau API yang bisa diakses oleh pengguna akhir untuk mendapatkan prediksi secara real-time.
+
+
