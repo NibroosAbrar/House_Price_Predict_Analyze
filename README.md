@@ -142,7 +142,7 @@ Beberapa teknik visualisasi yang relevan untuk analisis lanjutan:
 4. **Scatterplot** antara `Square_Footage` dan `House_Price` → membantu mengenali pola linear atau non-linear.
 
 ---
-## Modeling
+## Data Preparation
 
 Tahapan modeling bertujuan untuk membangun model machine learning yang dapat memprediksi harga rumah dengan akurat. Pada proyek ini, dua algoritma regresi digunakan:
 
@@ -172,7 +172,7 @@ X_test_scaled = scaler.transform(X_test)
 
 ---
 
-### Pembangunan Model
+## Model Development
 
 Dua model machine learning yang digunakan dalam proyek ini:
 
