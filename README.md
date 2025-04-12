@@ -50,17 +50,16 @@ Untuk mencapai tujuan tersebut, kami mengusulkan dua solusi model prediksi sebag
 
 ### Evaluasi dan Aplikasi Solusi
 
-- **Hyperparameter tuning** dilakukan pada kedua model menggunakan GridSearchCV atau RandomizedSearchCV untuk memaksimalkan kinerja.
+- **Hyperparameter tuning** dilakukan pada kedua model menggunakan teknik seperti GridSearchCV untuk memaksimalkan performa.
 - Model terbaik dipilih berdasarkan hasil evaluasi terhadap data uji menggunakan metrik berikut:
-  - **Mean Absolute Error (MAE)** untuk mengukur rata-rata selisih prediksi dengan nilai aktual.
-  - **Root Mean Squared Error (RMSE)** untuk memberi penalti lebih besar terhadap kesalahan besar.
-  - **R² Score** untuk menilai seberapa baik model menjelaskan variasi harga rumah.
+  - **Mean Absolute Error (MAE)**: mengukur rata-rata selisih absolut antara nilai prediksi dan nilai aktual.
+  - **Mean Absolute Percentage Error (MAPE)**: mengukur rata-rata persentase kesalahan prediksi terhadap nilai aktual, berguna untuk memahami kesalahan dalam skala relatif.
 
-- **Hasil model akan diterapkan dalam bentuk dashboard interaktif** yang dapat digunakan agen properti atau analis keuangan untuk:
-  - Melihat estimasi harga berdasarkan input fitur (lokasi, luas bangunan, tahun, dll).
-  - Menganalisis pengaruh fitur terhadap harga properti.
-  - Mengevaluasi kelayakan properti berdasarkan prediksi harga.
-
+- Hasil dari model akan diaplikasikan secara praktis, antara lain dalam bentuk:
+  - **Dashboard interaktif** yang memungkinkan pengguna untuk memasukkan fitur rumah dan melihat estimasi harga secara real-time.
+  - **Insight analitik** berupa ranking fitur paling berpengaruh terhadap harga rumah, sebagai bahan pertimbangan bisnis.
+  - **Sistem pendukung keputusan** bagi pelaku industri properti, seperti developer, bank, atau agen properti, dalam menentukan strategi harga.
+    
 ## Data Understanding
 
 Dataset yang digunakan:
