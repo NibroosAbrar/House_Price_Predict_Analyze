@@ -142,7 +142,7 @@ Beberapa teknik visualisasi yang relevan untuk analisis lanjutan:
 4. **Scatterplot** antara `Square_Footage` dan `House_Price` → membantu mengenali pola linear atau non-linear.
 
 ---
-## 🧠 Modeling
+## Modeling
 
 Tahapan modeling bertujuan untuk membangun model machine learning yang dapat memprediksi harga rumah dengan akurat. Pada proyek ini, dua algoritma regresi digunakan:
 
@@ -153,7 +153,7 @@ Kedua model ini dipilih karena mampu menangani hubungan non-linear antar fitur, 
 
 ---
 
-### ✂️ Split Data dan Scaling
+### Split Data dan Scaling
 
 Pertama, data dibagi menjadi **data latih (80%)** dan **data uji (20%)** menggunakan `train_test_split`. Selanjutnya, dilakukan **scaling** pada fitur numerik menggunakan `StandardScaler` untuk memastikan model seperti XGBoost dapat belajar secara optimal.
 
@@ -172,13 +172,13 @@ X_test_scaled = scaler.transform(X_test)
 
 ---
 
-### 🏗️ Pembangunan Model
+### Pembangunan Model
 
 Dua model machine learning yang digunakan dalam proyek ini:
 
 ---
 
-#### ✅ 1. Random Forest Regressor
+#### 1. Random Forest Regressor
 
 Random Forest adalah algoritma ensemble yang membangun beberapa pohon keputusan dan mengambil rata-rata prediksinya untuk meningkatkan akurasi dan mengurangi overfitting.
 
@@ -205,7 +205,7 @@ y_pred_rf = rf.predict(X_test)
 
 ---
 
-#### ✅ 2. XGBoost Regressor
+#### 2. XGBoost Regressor
 
 XGBoost adalah algoritma boosting yang sangat powerful untuk task regresi, dengan performa tinggi dan banyak parameter yang bisa dituning untuk peningkatan performa.
 
@@ -231,90 +231,3 @@ y_pred_xgb = xgb.predict(X_test_scaled)
   - Kompleksitas dalam tuning parameter
 
 ---
-
-### 🧪 Evaluasi dan Pemilihan Model Terbaik
-
-Model dievaluasi menggunakan beberapa metrik regresi berikut:
-
-- **MAE** (Mean Absolute Error)
-- **RMSE** (Root Mean Squared Error)
-- **R² Score**
-
-```python
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-import numpy as np
-
-mae_rf = mean_absolute_error(y_test, y_pred_rf)
-rmse_rf = np.sqrt(mean_squared_error(y_test, y_pred_rf))
-r2_rf = r2_score(y_test, y_pred_rf)
-
-mae_xgb = mean_absolute_error(y_test, y_pred_xgb)
-rmse_xgb = np.sqrt(mean_squared_error(y_test, y_pred_xgb))
-r2_xgb = r2_score(y_test, y_pred_xgb)
-```
-
-| Model              | MAE      | RMSE     | R² Score |
-|-------------------|----------|----------|----------|
-| Random Forest      | 18,000   | 25,000   | 0.85     |
-| XGBoost Regressor  | 11,500   | 17,000   | 0.92     |
-
-➡️ **XGBoost Regressor dipilih sebagai model terbaik**, karena memiliki:
-- MAE dan RMSE yang lebih rendah
-- Skor R² lebih tinggi → menunjukkan model mampu menjelaskan lebih banyak variansi data
-
----
-
-### 📌 Kesimpulan Modeling
-
-- **Random Forest** digunakan sebagai baseline karena kestabilannya dan interpretabilitas feature importance.
-- **XGBoost** menjadi model utama karena performa prediksi yang unggul.
-- Proses scaling dilakukan sebelum training untuk memastikan performa optimal.
-- Model XGBoost akan digunakan untuk deployment ke dalam sistem prediksi harga rumah secara real-time.
-
----
-
-
-
-
-## Modeling
-
-Model yang digunakan:
-1. **Linear Regression**
-   - Dasar dan mudah dipahami
-2. **XGBoost Regressor**
-   - Lebih kompleks dan mampu menangani hubungan non-linear
-
-Teknik:
-- Hyperparameter tuning menggunakan GridSearchCV
-- Feature importance dari XGBoost digunakan untuk analisis lebih lanjut
-
-Model XGBoost cenderung memberikan performa lebih baik karena kompleksitas dan fleksibilitasnya dalam menangani dataset besar dan fitur waktu.
-
-## Evaluation
-
-Metrik yang digunakan:
-- **MAE** (Mean Absolute Error)
-- **RMSE** (Root Mean Squared Error)
-- **R² Score**
-
-Contoh perhitungan:
-```python
-RMSE = sqrt(mean_squared_error(y_true, y_pred))
-MAE = mean_absolute_error(y_true, y_pred)
-```
-
-Hasil (simulasi):
-- Linear Regression: MAE = 18.000, RMSE = 25.000
-- XGBoost Regressor: MAE = 11.500, RMSE = 17.000
-
-XGBoost dipilih sebagai model terbaik karena menghasilkan kesalahan prediksi yang lebih rendah.
-
-## Struktur Laporan
-
-Laporan mengikuti alur berikut:
-1. **Domain Proyek** – Menggambarkan pentingnya konteks ekonomi properti
-2. **Business Understanding** – Menjabarkan tujuan dan solusi
-3. **Data Understanding** – Menjelaskan struktur dan fitur dataset
-4. **Data Preparation** – Menguraikan teknik praproses data
-5. **Modeling** – Pemilihan model dan tuning
-6. **Evaluation** – Evaluasi performa model berdasarkan metrik
