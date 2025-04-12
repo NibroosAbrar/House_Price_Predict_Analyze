@@ -24,19 +24,42 @@ Selain itu, Zillow Research (2023) mengembangkan model prediksi harga rumah meng
 
 Dengan menggunakan dataset dari Zillow dan pendekatan regresi, proyek ini bertujuan untuk menghasilkan prediksi nilai rumah yang akurat dan aplikatif untuk kebutuhan ekonomi dan bisnis di dunia nyata.
 
-
 ## Business Understanding
 
 ### Problem Statement
-Bagaimana memprediksi nilai rumah (home value) secara akurat berdasarkan data spasial, temporal, dan demografis?
+
+Prediksi nilai properti merupakan aspek krusial dalam pengambilan keputusan ekonomi di sektor perumahan. Baik pembeli, penjual, agen properti, maupun lembaga keuangan membutuhkan estimasi harga rumah yang akurat untuk meminimalisir risiko kerugian finansial. Namun, kompleksitas faktor yang memengaruhi harga rumah seperti lokasi, ukuran, kondisi pasar lokal, dan tren waktu seringkali menyebabkan estimasi yang bias atau tidak presisi.
+
+Ketergantungan terhadap penilaian manual atau asumsi subyektif membuat proses valuasi rentan terhadap kesalahan. Oleh karena itu, dibutuhkan pendekatan berbasis data yang dapat mengolah banyak variabel secara efisien untuk memberikan estimasi harga yang lebih akurat dan dapat diandalkan.
 
 ### Goals
-Mengembangkan model machine learning regresi yang dapat memprediksi nilai rumah dengan galat yang kecil, sehingga bermanfaat untuk pengembang properti dan investor.
+
+- Mengembangkan model machine learning berbasis data properti untuk memprediksi nilai rumah secara akurat.
+- Menyediakan sistem pendukung keputusan bagi pelaku industri properti dalam menentukan harga jual, harga beli, atau plafon pinjaman.
+- Mengidentifikasi faktor-faktor paling berpengaruh terhadap nilai rumah agar dapat digunakan sebagai insight bisnis.
 
 ### Solution Statement
-1. Membangun dua model: Linear Regression dan XGBoost Regressor.
-2. Melakukan hyperparameter tuning untuk meningkatkan akurasi model.
-3. Memilih model terbaik berdasarkan metrik evaluasi RMSE dan MAE.
+
+Untuk mencapai tujuan tersebut, kami mengusulkan dua solusi model prediksi sebagai berikut:
+
+1. **Random Forest Regressor**  
+   Digunakan sebagai baseline model. Random Forest cocok untuk menangani dataset dengan banyak fitur serta memiliki kemampuan menangkap hubungan non-linear antar variabel. Model ini juga relatif mudah diinterpretasikan, terutama dalam menampilkan feature importance yang bermanfaat bagi pengambil keputusan.
+
+2. **XGBoost Regressor**  
+   Merupakan algoritma boosting yang sangat populer dalam kompetisi prediksi karena kemampuannya memberikan akurasi tinggi dan mengatasi overfitting. XGBoost digunakan untuk meningkatkan performa prediksi dan akan dituning secara optimal untuk mendapatkan model terbaik.
+
+### Evaluasi dan Aplikasi Solusi
+
+- **Hyperparameter tuning** dilakukan pada kedua model menggunakan GridSearchCV atau RandomizedSearchCV untuk memaksimalkan kinerja.
+- Model terbaik dipilih berdasarkan hasil evaluasi terhadap data uji menggunakan metrik berikut:
+  - **Mean Absolute Error (MAE)** untuk mengukur rata-rata selisih prediksi dengan nilai aktual.
+  - **Root Mean Squared Error (RMSE)** untuk memberi penalti lebih besar terhadap kesalahan besar.
+  - **R² Score** untuk menilai seberapa baik model menjelaskan variasi harga rumah.
+
+- **Hasil model akan diterapkan dalam bentuk dashboard interaktif** yang dapat digunakan agen properti atau analis keuangan untuk:
+  - Melihat estimasi harga berdasarkan input fitur (lokasi, luas bangunan, tahun, dll).
+  - Menganalisis pengaruh fitur terhadap harga properti.
+  - Mengevaluasi kelayakan properti berdasarkan prediksi harga.
 
 ## Data Understanding
 
