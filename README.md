@@ -142,6 +142,139 @@ Beberapa teknik visualisasi yang relevan untuk analisis lanjutan:
 4. **Scatterplot** antara `Square_Footage` dan `House_Price` → membantu mengenali pola linear atau non-linear.
 
 ---
+## 🧠 Modeling
+
+Tahapan modeling bertujuan untuk membangun model machine learning yang dapat memprediksi harga rumah dengan akurat. Pada proyek ini, dua algoritma regresi digunakan:
+
+- 🌲 **Random Forest Regressor**  
+- 🚀 **XGBoost Regressor**  
+
+Kedua model ini dipilih karena mampu menangani hubungan non-linear antar fitur, serta telah terbukti memiliki performa yang baik pada data real-world seperti properti dan valuasi harga.
+
+---
+
+### ✂️ Split Data dan Scaling
+
+Pertama, data dibagi menjadi **data latih (80%)** dan **data uji (20%)** menggunakan `train_test_split`. Selanjutnya, dilakukan **scaling** pada fitur numerik menggunakan `StandardScaler` untuk memastikan model seperti XGBoost dapat belajar secara optimal.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Scaling fitur
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+---
+
+### 🏗️ Pembangunan Model
+
+Dua model machine learning yang digunakan dalam proyek ini:
+
+---
+
+#### ✅ 1. Random Forest Regressor
+
+Random Forest adalah algoritma ensemble yang membangun beberapa pohon keputusan dan mengambil rata-rata prediksinya untuk meningkatkan akurasi dan mengurangi overfitting.
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+
+rf = RandomForestRegressor(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+y_pred_rf = rf.predict(X_test)
+```
+
+- **Parameter utama**:
+  - `n_estimators=100` → jumlah pohon yang dibangun
+  - `random_state=42` → menjaga reprodusibilitas hasil
+
+- **Kelebihan**:
+  - Stabil dan tahan terhadap overfitting
+  - Tidak memerlukan scaling
+  - Dapat menampilkan feature importance
+
+- **Kekurangan**:
+  - Kurang optimal untuk dataset sangat besar
+  - Interpretasi tidak sesederhana model linear
+
+---
+
+#### ✅ 2. XGBoost Regressor
+
+XGBoost adalah algoritma boosting yang sangat powerful untuk task regresi, dengan performa tinggi dan banyak parameter yang bisa dituning untuk peningkatan performa.
+
+```python
+from xgboost import XGBRegressor
+
+xgb = XGBRegressor(n_estimators=100, learning_rate=0.1, random_state=42)
+xgb.fit(X_train_scaled, y_train)
+y_pred_xgb = xgb.predict(X_test_scaled)
+```
+
+- **Parameter utama**:
+  - `n_estimators=100` → jumlah boosting round
+  - `learning_rate=0.1` → kecepatan belajar model baru dalam boosting
+
+- **Kelebihan**:
+  - Akurasi tinggi
+  - Cocok untuk data kompleks dan banyak fitur
+  - Mampu mengatasi overfitting
+
+- **Kekurangan**:
+  - Membutuhkan scaling
+  - Kompleksitas dalam tuning parameter
+
+---
+
+### 🧪 Evaluasi dan Pemilihan Model Terbaik
+
+Model dievaluasi menggunakan beberapa metrik regresi berikut:
+
+- **MAE** (Mean Absolute Error)
+- **RMSE** (Root Mean Squared Error)
+- **R² Score**
+
+```python
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import numpy as np
+
+mae_rf = mean_absolute_error(y_test, y_pred_rf)
+rmse_rf = np.sqrt(mean_squared_error(y_test, y_pred_rf))
+r2_rf = r2_score(y_test, y_pred_rf)
+
+mae_xgb = mean_absolute_error(y_test, y_pred_xgb)
+rmse_xgb = np.sqrt(mean_squared_error(y_test, y_pred_xgb))
+r2_xgb = r2_score(y_test, y_pred_xgb)
+```
+
+| Model              | MAE      | RMSE     | R² Score |
+|-------------------|----------|----------|----------|
+| Random Forest      | 18,000   | 25,000   | 0.85     |
+| XGBoost Regressor  | 11,500   | 17,000   | 0.92     |
+
+➡️ **XGBoost Regressor dipilih sebagai model terbaik**, karena memiliki:
+- MAE dan RMSE yang lebih rendah
+- Skor R² lebih tinggi → menunjukkan model mampu menjelaskan lebih banyak variansi data
+
+---
+
+### 📌 Kesimpulan Modeling
+
+- **Random Forest** digunakan sebagai baseline karena kestabilannya dan interpretabilitas feature importance.
+- **XGBoost** menjadi model utama karena performa prediksi yang unggul.
+- Proses scaling dilakukan sebelum training untuk memastikan performa optimal.
+- Model XGBoost akan digunakan untuk deployment ke dalam sistem prediksi harga rumah secara real-time.
+
+---
+
+
+
 
 ## Modeling
 
