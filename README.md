@@ -62,27 +62,86 @@ Untuk mencapai tujuan tersebut, kami mengusulkan dua solusi model prediksi sebag
     
 ## Data Understanding
 
-Dataset yang digunakan:
-- 📦 [Home Value Insights - Kaggle](https://www.kaggle.com/datasets/prokshitha/home-value-insights/data)
+### Dataset Overview
 
-Informasi data:
-- Jumlah entri: >18.000 baris
-- Fitur utama:
-  - `RegionID`, `RegionName`, `State`
-  - `SizeRank`, `RegionType`, `StateName`
-  - `2020-01` sampai `2023-01` (nilai rumah per bulan dalam USD)
-- Target: Nilai rumah terbaru atau pertumbuhan nilai rumah
+Dataset ini memuat informasi properti rumah tinggal seperti ukuran bangunan, jumlah kamar, kualitas lingkungan, dan harga rumah. Dataset berisi **1.000 baris** dan **8 fitur** yang relevan untuk prediksi harga rumah. Dataset ini dapat digunakan untuk model regresi.
 
-## Data Preparation
+📥 Sumber data: [Home Value Insights - Kaggle](https://www.kaggle.com/datasets/prokshitha/home-value-insights)
 
-Langkah-langkah data preparation:
-- Menghapus kolom identifikasi atau kategori yang tidak diperlukan
-- Transformasi data dari format time-series menjadi tabular (wide-to-long atau long-to-wide)
-- Mengatasi missing value dengan interpolasi atau imputasi
-- Normalisasi nilai numerik agar setara skala
-- Split data: 80% training, 20% testing
+---
 
-Proses ini penting untuk memastikan data siap untuk diproses oleh algoritma machine learning dan menghindari bias.
+### Dimensi dan Tipe Data
+
+- **Ukuran data**: `(1000, 8)`
+- **Tipe data per kolom**:
+
+| Fitur | Tipe Data |
+|-------|-----------|
+| `Square_Footage` | int64 |
+| `Num_Bedrooms` | int64 |
+| `Num_Bathrooms` | int64 |
+| `Year_Built` | int64 |
+| `Lot_Size` | float64 |
+| `Garage_Size` | int64 |
+| `Neighborhood_Quality` | int64 |
+| `House_Price` | float64 |
+
+---
+
+### Cek Data Awal
+
+Contoh 5 data pertama:
+
+| Square_Footage | Num_Bedrooms | Num_Bathrooms | Year_Built | Lot_Size | Garage_Size | Neighborhood_Quality | House_Price |
+|----------------|--------------|---------------|------------|----------|-------------|-----------------------|-------------|
+| 1320           | 2            | 1             | 2016       | 1.59     | 1           | 5                     | 523280.65   |
+| 4322           | 3            | 2             | 2005       | 4.75     | 2           | 6                     | 779727.94   |
+| 5925           | 4            | 3             | 1997       | 5.34     | 2           | 7                     | 977794.61   |
+| 496            | 1            | 1             | 1977       | 1.72     | 1           | 3                     | 144320.33   |
+| 9285           | 5            | 4             | 1993       | 4.60     | 3           | 8                     | 1.04e+06    |
+
+---
+
+### Missing Values
+
+Hasil pengecekan menunjukkan bahwa **tidak ada nilai yang hilang (missing values)** pada seluruh fitur.
+
+---
+
+### Statistik Deskriptif
+
+| Fitur | Mean | Min | Max |
+|-------|------|-----|-----|
+| `Square_Footage` | 2,994.9 | 450 | 9,350 |
+| `Num_Bedrooms` | 2.99 | 1 | 5 |
+| `Num_Bathrooms` | 1.98 | 1 | 4 |
+| `Year_Built` | 1997.3 | 1970 | 2020 |
+| `Lot_Size` | 2.98 | 0.48 | 7.54 |
+| `Garage_Size` | 1.39 | 0 | 3 |
+| `Neighborhood_Quality` | 5.51 | 1 | 10 |
+| `House_Price` | 624,166.48 | 100,000 | 1,183,729.08 |
+
+---
+
+### Insight Awal dari Data
+
+- Fitur `Square_Footage`, `Lot_Size`, dan `Garage_Size` cenderung memiliki rentang nilai yang luas → perlu pertimbangan normalisasi atau scaling saat modeling.
+- Harga rumah (`House_Price`) memiliki variasi cukup tinggi (dari 100 ribu hingga lebih dari 1 juta), artinya model harus mampu mengakomodasi data outlier dan high variance.
+- Fitur `Neighborhood_Quality` berupa **ordinal**, dari 1 (terendah) hingga 10 (tertinggi).
+- Tidak ada data yang hilang → tidak diperlukan imputasi.
+
+---
+
+### Visualisasi dan EDA (Exploratory Data Analysis)
+
+Beberapa teknik visualisasi yang relevan untuk analisis lanjutan:
+
+1. **Histogram** untuk distribusi harga rumah → mengetahui apakah distribusinya skewed.
+2. **Boxplot** untuk mendeteksi outlier pada fitur numerik seperti `Square_Footage`, `Lot_Size`, dan `House_Price`.
+3. **Heatmap korelasi** untuk melihat hubungan antar fitur numerik terhadap target (`House_Price`).
+4. **Scatterplot** antara `Square_Footage` dan `House_Price` → membantu mengenali pola linear atau non-linear.
+
+---
 
 ## Modeling
 
