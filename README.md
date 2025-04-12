@@ -231,3 +231,94 @@ y_pred_xgb = xgb.predict(X_test_scaled)
   - Kompleksitas dalam tuning parameter
 
 ---
+
+## Evaluation
+
+### Metrik Evaluasi yang Digunakan
+
+Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk mengukur performa model dalam memprediksi nilai rumah:
+
+- **R² Score (R-Squared)**  
+  Mengukur seberapa baik variabel independen menjelaskan variabel dependen.  
+  Formula:  
+  \[
+  R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
+  \]  
+  Nilai R² berkisar antara 0 hingga 1, semakin mendekati 1 maka semakin baik performa model.
+
+- **MAE (Mean Absolute Error)**  
+  Rata-rata selisih absolut antara nilai prediksi dan nilai aktual.  
+  Formula:  
+  \[
+  MAE = \frac{1}{n} \sum |y_i - \hat{y}_i|
+  \]  
+  Metrik ini menunjukkan seberapa besar rata-rata kesalahan prediksi model dalam satuan yang sama dengan target.
+
+- **RMSE (Root Mean Squared Error)**  
+  Akar dari rata-rata kuadrat selisih antara nilai aktual dan nilai prediksi.  
+  Formula:  
+  \[
+  RMSE = \sqrt{ \frac{1}{n} \sum (y_i - \hat{y}_i)^2 }
+  \]  
+  RMSE lebih sensitif terhadap outlier dibandingkan MAE karena menggunakan kuadrat selisih.
+
+- **MAPE (Mean Absolute Percentage Error)**  
+  Persentase rata-rata kesalahan prediksi terhadap nilai aktual.  
+  Formula:  
+  \[
+  MAPE = \frac{1}{n} \sum \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100\%
+  \]  
+  Berguna untuk memahami kesalahan dalam konteks proporsi terhadap nilai aktual.
+
+---
+
+### Hasil Evaluasi Model
+
+#### Random Forest Regressor
+
+| Metrik | Nilai |
+|--------|-------|
+| R² Train | 0.9996 |
+| R² Test  | 0.9993 |
+| RMSE     | 1.12e+04 |
+| MAE      | 8.95e+03 |
+| MAPE     | 1.43% |
+
+Model Random Forest menunjukkan performa yang sangat baik, dengan nilai R² yang tinggi baik pada data latih maupun data uji. MAE dan MAPE yang rendah menandakan bahwa model ini mampu memberikan prediksi yang sangat dekat dengan nilai aktual.
+
+**Fitur Terpenting**:
+- Square_Footage
+- Year_Built
+- Lot_Size
+
+---
+
+#### XGBoost Regressor
+
+| Metrik | Nilai |
+|--------|-------|
+| R² Train | 0.9993 |
+| R² Test  | 0.9992 |
+| RMSE     | 1.23e+04 |
+| MAE      | 9.25e+03 |
+| MAPE     | 1.51% |
+
+Model XGBoost juga menunjukkan performa yang sangat baik, dengan R² di atas 0.99. Namun, jika dibandingkan dengan Random Forest, nilai MAE dan MAPE sedikit lebih tinggi, menunjukkan bahwa prediksinya kurang presisi secara relatif.
+
+**Fitur Terpenting**:
+- Square_Footage
+- Year_Built
+- Lot_Size
+
+---
+
+### Model Terbaik
+
+Berdasarkan evaluasi metrik:
+
+- Random Forest memberikan hasil prediksi yang lebih akurat dibandingkan XGBoost.
+- MAPE Random Forest lebih kecil (1.43%) dibanding XGBoost (1.51%), yang menunjukkan prediksi relatif lebih baik.
+- Oleh karena itu, **Random Forest dipilih sebagai model terbaik** untuk proyek ini.
+
+Model ini dapat digunakan secara praktis untuk memprediksi harga rumah dengan tingkat kesalahan yang sangat kecil dan stabil baik di data latih maupun uji.
+
