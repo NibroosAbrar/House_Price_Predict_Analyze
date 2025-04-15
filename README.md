@@ -242,7 +242,7 @@ Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk menguk
 
 Mengukur seberapa baik variabel independen menjelaskan variabel dependen.
 
-![R2 Formula](https://latex.codecogs.com/png.image?\dpi{150}&bg=black&color=white&space;R^2=1-\frac{\sum(y_i-\hat{y}_i)^2}{\sum(y_i-\bar{y})^2})
+![R2 Formula](https://latex.codecogs.com/png.image?\dpi{150}&\bg_white&\color{Black} R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2})
 
 Nilai R² berkisar antara 0 hingga 1. Semakin mendekati 1, semakin baik performa model.
 
