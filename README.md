@@ -255,11 +255,13 @@ Rata-rata selisih absolut antara nilai prediksi dan nilai aktual.
 ### 📊 RMSE (Root Mean Squared Error)
 
 Akar dari rata-rata kuadrat selisih antara nilai aktual dan nilai prediksi.
+
 ---
 
 ### 📉 MAPE (Mean Absolute Percentage Error)
 
 Persentase rata-rata kesalahan prediksi terhadap nilai aktual.
+
 ---
 
 ### Hasil Evaluasi Model
@@ -268,11 +270,11 @@ Persentase rata-rata kesalahan prediksi terhadap nilai aktual.
 
 | Metrik | Nilai |
 |--------|-------|
-| R² Train | 0.9996 |
-| R² Test  | 0.9993 |
-| RMSE     | 1.12e+04 |
-| MAE      | 8.95e+03 |
-| MAPE     | 1.43% |
+| R² Train | 0.999 |
+| R² Test  | 0,993 |
+| RMSE     | 19852,75 |
+| MAE      | 16114,29 |
+| MAPE     | 3,24% |
 
 Model Random Forest menunjukkan performa yang sangat baik, dengan nilai R² yang tinggi baik pada data latih maupun data uji. MAE dan MAPE yang rendah menandakan bahwa model ini mampu memberikan prediksi yang sangat dekat dengan nilai aktual.
 
@@ -287,11 +289,11 @@ Model Random Forest menunjukkan performa yang sangat baik, dengan nilai R² yang
 
 | Metrik | Nilai |
 |--------|-------|
-| R² Train | 0.9993 |
-| R² Test  | 0.9992 |
-| RMSE     | 1.23e+04 |
-| MAE      | 9.25e+03 |
-| MAPE     | 1.51% |
+| R² Train | 0.999 |
+| R² Test  | 0.996 |
+| RMSE     | 15392,23 |
+| MAE      | 12539,32 |
+| MAPE     | 2,61% |
 
 Model XGBoost juga menunjukkan performa yang sangat baik, dengan R² di atas 0.99. Namun, jika dibandingkan dengan Random Forest, nilai MAE dan MAPE sedikit lebih tinggi, menunjukkan bahwa prediksinya kurang presisi secara relatif.
 
@@ -306,9 +308,9 @@ Model XGBoost juga menunjukkan performa yang sangat baik, dengan R² di atas 0.9
 
 Berdasarkan evaluasi metrik:
 
-- Random Forest memberikan hasil prediksi yang lebih akurat dibandingkan XGBoost.
-- MAPE Random Forest lebih kecil (1.43%) dibanding XGBoost (1.51%), yang menunjukkan prediksi relatif lebih baik.
-- Oleh karena itu, **Random Forest dipilih sebagai model terbaik** untuk proyek ini.
+- XGBoost memberikan hasil prediksi yang lebih akurat dibandingkan Random Forest.
+- MAPE XGBoost lebih kecil (2.61%) dibanding Random Forest (3.24%), yang menunjukkan prediksi relatif lebih baik.
+- Oleh karena itu, **XGBoost dipilih sebagai model terbaik** untuk proyek ini.
 
 Model ini dapat digunakan secara praktis untuk memprediksi harga rumah dengan tingkat kesalahan yang sangat kecil dan stabil baik di data latih maupun uji.
 
