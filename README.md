@@ -234,39 +234,50 @@ y_pred_xgb = xgb.predict(X_test_scaled)
 
 ## Evaluation
 
-### Metrik Evaluasi yang Digunakan
+# Metrik Evaluasi yang Digunakan
 
-Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk mengukur performa model dalam memprediksi nilai rumah:
+Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk mengukur performa model dalam memprediksi nilai rumah.
 
-- **R² Score (R-Squared)**  
-  Mengukur seberapa baik variabel independen menjelaskan variabel dependen.  
-  Formula:
-  ![R2 Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;R^2&space;=&space;1&space;-&space;\frac{\sum&space;(y_i&space;-&space;\hat{y}_i)^2}{\sum&space;(y_i&space;-&space;\bar{y})^2})
-  Nilai R² berkisar antara 0 hingga 1, semakin mendekati 1 maka semakin baik performa model.
+---
 
-- **MAE (Mean Absolute Error)**  
-  Rata-rata selisih absolut antara nilai prediksi dan nilai aktual.  
-  Formula:  
-  \[
-  MAE = \frac{1}{n} \sum |y_i - \hat{y}_i|
-  \]  
-  Metrik ini menunjukkan seberapa besar rata-rata kesalahan prediksi model dalam satuan yang sama dengan target.
+### 📐 R² Score (R-Squared)
 
-- **RMSE (Root Mean Squared Error)**  
-  Akar dari rata-rata kuadrat selisih antara nilai aktual dan nilai prediksi.  
-  Formula:  
-  \[
-  RMSE = \sqrt{ \frac{1}{n} \sum (y_i - \hat{y}_i)^2 }
-  \]  
-  RMSE lebih sensitif terhadap outlier dibandingkan MAE karena menggunakan kuadrat selisih.
+Mengukur seberapa baik variabel independen menjelaskan variabel dependen.
 
-- **MAPE (Mean Absolute Percentage Error)**  
-  Persentase rata-rata kesalahan prediksi terhadap nilai aktual.  
-  Formula:  
-  \[
-  MAPE = \frac{1}{n} \sum \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100\%
-  \]  
-  Berguna untuk memahami kesalahan dalam konteks proporsi terhadap nilai aktual.
+![R2 Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;R^2&space;=&space;1&space;-&space;\frac{\sum&space;(y_i&space;-&space;\hat{y}_i)^2}{\sum&space;(y_i&space;-&space;\bar{y})^2})
+
+Nilai R² berkisar antara 0 hingga 1. Semakin mendekati 1, semakin baik performa model.
+
+---
+
+### 📏 MAE (Mean Absolute Error)
+
+Rata-rata selisih absolut antara nilai prediksi dan nilai aktual.
+
+![MAE Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;MAE&space;=&space;\frac{1}{n}&space;\sum&space;|y_i&space;-&space;\hat{y}_i|)
+
+Metrik ini menunjukkan rata-rata kesalahan prediksi dalam satuan yang sama dengan target.
+
+---
+
+### 📊 RMSE (Root Mean Squared Error)
+
+Akar dari rata-rata kuadrat selisih antara nilai aktual dan nilai prediksi.
+
+![RMSE Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;RMSE&space;=&space;\sqrt{\frac{1}{n}&space;\sum&space;(y_i&space;-&space;\hat{y}_i)^2})
+
+RMSE lebih sensitif terhadap outlier karena menggunakan kuadrat selisih.
+
+---
+
+### 📉 MAPE (Mean Absolute Percentage Error)
+
+Persentase rata-rata kesalahan prediksi terhadap nilai aktual.
+
+![MAPE Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;MAPE&space;=&space;\frac{1}{n}&space;\sum&space;\left|&space;\frac{y_i&space;-&space;\hat{y}_i}{y_i}&space;\right|&space;\times&space;100\%)
+
+Berguna untuk memahami kesalahan dalam konteks proporsi terhadap nilai aktual.
+
 
 ---
 
