@@ -241,9 +241,9 @@ Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk menguk
 - **R² Score (R-Squared)**  
   Mengukur seberapa baik variabel independen menjelaskan variabel dependen.  
   Formula:  
-  \[
-  R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
-  \]  
+   $$
+   R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
+   $$ 
   Nilai R² berkisar antara 0 hingga 1, semakin mendekati 1 maka semakin baik performa model.
 
 - **MAE (Mean Absolute Error)**  
