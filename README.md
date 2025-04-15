@@ -234,8 +234,6 @@ y_pred_xgb = xgb.predict(X_test_scaled)
 
 ## Evaluation
 
-# Metrik Evaluasi yang Digunakan
-
 Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk mengukur performa model dalam memprediksi nilai rumah.
 
 ---
@@ -244,7 +242,7 @@ Dalam proyek ini, kami menggunakan beberapa metrik evaluasi regresi untuk menguk
 
 Mengukur seberapa baik variabel independen menjelaskan variabel dependen.
 
-![R2 Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;R^2&space;=&space;1&space;-&space;\frac{\sum&space;(y_i&space;-&space;\hat{y}_i)^2}{\sum&space;(y_i&space;-&space;\bar{y})^2})
+![R2 Formula](https://latex.codecogs.com/png.image?\dpi{150}&bg=black&color=white&space;R^2=1-\frac{\sum(y_i-\hat{y}_i)^2}{\sum(y_i-\bar{y})^2})
 
 Nilai R² berkisar antara 0 hingga 1. Semakin mendekati 1, semakin baik performa model.
 
@@ -254,9 +252,7 @@ Nilai R² berkisar antara 0 hingga 1. Semakin mendekati 1, semakin baik performa
 
 Rata-rata selisih absolut antara nilai prediksi dan nilai aktual.
 
-![MAE Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;MAE&space;=&space;\frac{1}{n}&space;\sum&space;|y_i&space;-&space;\hat{y}_i|)
-
-Metrik ini menunjukkan rata-rata kesalahan prediksi dalam satuan yang sama dengan target.
+![MAE Formula](https://latex.codecogs.com/png.image?\dpi{150}&bg=black&color=white&space;MAE=\frac{1}{n}\sum|y_i-\hat{y}_i|)
 
 ---
 
@@ -264,9 +260,7 @@ Metrik ini menunjukkan rata-rata kesalahan prediksi dalam satuan yang sama denga
 
 Akar dari rata-rata kuadrat selisih antara nilai aktual dan nilai prediksi.
 
-![RMSE Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;RMSE&space;=&space;\sqrt{\frac{1}{n}&space;\sum&space;(y_i&space;-&space;\hat{y}_i)^2})
-
-RMSE lebih sensitif terhadap outlier karena menggunakan kuadrat selisih.
+![RMSE Formula](https://latex.codecogs.com/png.image?\dpi{150}&bg=black&color=white&space;RMSE=\sqrt{\frac{1}{n}\sum(y_i-\hat{y}_i)^2})
 
 ---
 
@@ -274,9 +268,8 @@ RMSE lebih sensitif terhadap outlier karena menggunakan kuadrat selisih.
 
 Persentase rata-rata kesalahan prediksi terhadap nilai aktual.
 
-![MAPE Formula](https://latex.codecogs.com/png.image?\dpi{110}&space;MAPE&space;=&space;\frac{1}{n}&space;\sum&space;\left|&space;\frac{y_i&space;-&space;\hat{y}_i}{y_i}&space;\right|&space;\times&space;100\%)
+![MAPE Formula](https://latex.codecogs.com/png.image?\dpi{150}&bg=black&color=white&space;MAPE=\frac{1}{n}\sum\left|\frac{y_i-\hat{y}_i}{y_i}\right|\times100\%)
 
-Berguna untuk memahami kesalahan dalam konteks proporsi terhadap nilai aktual.
 
 
 ---
