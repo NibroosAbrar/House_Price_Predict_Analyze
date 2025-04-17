@@ -146,23 +146,21 @@ Beberapa teknik visualisasi yang relevan untuk analisis lanjutan:
 
 Tahapan **data preparation** dilakukan untuk memastikan data yang digunakan dalam pemodelan bersih, relevan, dan siap digunakan oleh algoritma machine learning. Teknik-teknik yang dilakukan meliputi:
 
+- **Handling Missing Values (Jika ada nilai yang hilang)**  
+  Menghapus atau mengisi nilai kosong pada data menggunakan metode yang sesuai (seperti imputasi mean/median untuk numerik dan modus untuk kategorik).
+
 - **Memisahkan Features dan Target**  
   Memisahkan variabel independen (fitur) dari variabel dependen (target) yang akan diprediksi, yaitu harga rumah.
 
-- **Handling Missing Values**  
-  Menghapus atau mengisi nilai kosong pada data menggunakan metode yang sesuai (seperti imputasi mean/median untuk numerik dan modus untuk kategorik).
-
 - **Encoding Categorical Features**  
   Mengubah fitur kategorikal menjadi format numerik menggunakan teknik seperti One-Hot Encoding agar dapat diproses oleh model.
-
-- **Feature Scaling / Normalization**  
-  Melakukan normalisasi atau standardisasi pada fitur numerik untuk menyamakan skala antar fitur dan mempercepat proses pelatihan.
-
-- **Outlier Detection and Removal**  
-  Mengidentifikasi dan menangani outlier yang dapat mempengaruhi performa model secara signifikan.
-
+  
 - **Train-Test Split**  
   Membagi data menjadi data pelatihan dan data pengujian dengan rasio tertentu (misalnya 80:20) untuk mengevaluasi performa model secara objektif.
+
+  - **Feature Scaling / Normalization**  
+  Melakukan normalisasi atau standardisasi pada fitur numerik untuk menyamakan skala antar fitur dan mempercepat proses pelatihan.
+
 
 ---
 
